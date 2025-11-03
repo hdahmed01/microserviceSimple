@@ -1,0 +1,14 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: r1
+          uri: lb://CUSTOMER-SERVICE
+#          uri: http://localhost:8086
+          predicates:
+            - Path=/customers/**
+        - id: r2
+          uri: lb://INVENTORY-SERVICE
+#          uri: http://localhost:8087
+          predicates:
+            - Path=/inventories/**
