@@ -1,0 +1,10 @@
+package com.ahmed.billingservice.repo;
+
+import com.ahmed.billingservice.entities.Bill;
+import com.ahmed.billingservice.entities.ProductItem;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+
+@RepositoryRestResource
+public interface ProductItemRepo extends JpaRepository<ProductItem,Long> {
+}
