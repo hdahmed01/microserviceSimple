@@ -1,6 +1,7 @@
 package com.ahmed.billingservice.entities;
 
 import com.ahmed.billingservice.models.Product;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -15,6 +16,7 @@ public class ProductItem {
     private int quantity;
     private double unitPrice;
     @ManyToOne
+    @JsonIgnore
     private Bill bill;
     @Transient
     private Product product;

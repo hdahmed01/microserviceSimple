@@ -26,7 +26,12 @@ public class CustomerServiceApplication {
     CommandLineRunner start(CustomerRepo customerRepository) {
         return args -> {
             customerRepository.save(Customer.builder()
-                    .name("Ahmed").build());
+                    .name("Ahmed").address("Tunis").email("test@gmail.com").build());
+
+            customerRepository.save(Customer.builder()
+                    .name("aziz").address("nabel").email("aziz@gmail.com").build());
+            customerRepository.save(Customer.builder()
+                    .name("patrik").address("paris").email("patrik@gmail.com").build());
         };
     }
 }

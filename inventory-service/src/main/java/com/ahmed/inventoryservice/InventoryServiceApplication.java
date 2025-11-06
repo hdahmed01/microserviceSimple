@@ -1,6 +1,6 @@
 package com.ahmed.inventoryservice;
 
-import com.ahmed.inventoryservice.entity.Inventory;
+import com.ahmed.inventoryservice.entity.Product;
 import com.ahmed.inventoryservice.repo.InventoryRepo;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -20,8 +20,8 @@ public class InventoryServiceApplication {
 	@Bean
 	CommandLineRunner run(InventoryRepo repo) {
 		return args -> {
-			repo.save(Inventory.builder().id(UUID.randomUUID().toString()).name("Pc").build());
-			repo.save(Inventory.builder().id(UUID.randomUUID().toString()).name("Phone").build());
+			repo.save(Product.builder().id(UUID.randomUUID().toString()).name("Pc").build());
+			repo.save(Product.builder().id(UUID.randomUUID().toString()).name("Phone").build());
 
 		};
 	}
