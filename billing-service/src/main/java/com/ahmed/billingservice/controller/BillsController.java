@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 public class BillsController {
@@ -27,5 +29,15 @@ public class BillsController {
         bill.setCustomer(customerRestClient.FindCustomerById(bill.getCustomerId()));
         bill.getProductItems().forEach(productItem -> productItem.setProduct(productRestClient.getProductById(productItem.getProductId())));
         return bill;
+    }
+    @GetMapping(path = "/bills/customer/{id}")
+    public List<Bill> findBillsByCustomerId(@PathVariable Long id) {
+        List<Bill> bills=billRepo.findBillByCustomerId(id);
+        bills.forEach(bill ->
+        {
+            bill.setCustomer(customerRestClient.FindCustomerById(bill.getCustomerId()));
+            bill.getProductItems().forEach(productItem -> productItem.setProduct(productRestClient.getProductById(productItem.getProductId())));
+        } );
+        return bills;
     }
 }

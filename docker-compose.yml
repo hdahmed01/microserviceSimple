@@ -86,6 +86,13 @@ services:
     depends_on:
       config-service:
         condition: service_healthy
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+      - "4200:80"
+    expose:
+      - 80
 
 
 

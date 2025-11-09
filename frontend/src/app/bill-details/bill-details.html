@@ -1,0 +1,49 @@
+<div class="p-3" *ngIf="bill">
+  <div class="card mb-3">
+    <div class="card-body">
+      <h4>Bill #{{ bill.id }}</h4>
+      <p><strong>Billing Date:</strong> {{ bill.billingDate | date:'short' }}</p>
+
+      <h5>Customer Info</h5>
+      <ul>
+        <li><strong>ID:</strong> {{ bill.customer.id }}</li>
+        <li><strong>Name:</strong> {{ bill.customer.name }}</li>
+        <li><strong>Address:</strong> {{ bill.customer.address }}</li>
+        <li><strong>Email:</strong> {{ bill.customer.email }}</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h5>Product Items</h5>
+      <table class="table table-striped" *ngIf="bill.productItems.length > 0">
+        <thead>
+        <tr>
+          <th>Product Name</th>
+          <th>Quantity</th>
+          <th>Unit Price</th>
+          <th>Total</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of bill.productItems">
+          <td>{{ item.product.name }}</td>
+          <td>{{ item.quantity }}</td>
+          <td>{{ item.unitPrice }}</td>
+          <td>{{ item.quantity * item.unitPrice }}</td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+          <th colspan="3">Total Bill</th>
+          <th>{{ getTotal() }}</th>
+        </tr>
+        </tfoot>
+      </table>
+      <div *ngIf="bill.productItems.length === 0">
+        <p>No products in this bill.</p>
+      </div>
+    </div>
+  </div>
+</div>

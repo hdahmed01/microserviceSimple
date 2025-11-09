@@ -1,0 +1,34 @@
+<div class="p-3">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="mb-3">Billing List</h4>
+
+      <table class="table table-striped" *ngIf="bills.length > 0">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Customer ID</th>
+          <th>Billing Date</th>
+          <th>Details</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr *ngFor="let b of bills">
+          <td>{{ b.id }}</td>
+          <td>{{ b.customerId }}</td>
+          <td>{{ b.billingDate | date:'short' }}</td>
+          <td>
+            <button class="btn btn-primary btn-sm" [routerLink]="['/bills', b.id]">View</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+      <div *ngIf="bills.length === 0">
+        <p>No bills found.</p>
+      </div>
+
+    </div>
+  </div>
+</div>

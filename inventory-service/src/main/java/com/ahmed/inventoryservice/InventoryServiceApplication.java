@@ -20,8 +20,8 @@ public class InventoryServiceApplication {
 	@Bean
 	CommandLineRunner run(InventoryRepo repo) {
 		return args -> {
-			repo.save(Product.builder().id(UUID.randomUUID().toString()).name("Pc").build());
-			repo.save(Product.builder().id(UUID.randomUUID().toString()).name("Phone").build());
+			repo.save(Product.builder().id(UUID.randomUUID().toString()).name("Pc").price(1000).quantity(50).build());
+			repo.save(Product.builder().id(UUID.randomUUID().toString()).name("Phone").price(500).quantity(100).build());
 
 		};
 	}
